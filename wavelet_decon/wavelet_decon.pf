@@ -1,0 +1,41 @@
+input_mdlist &Tbl{
+sta string
+chan string
+nsamp int
+samprate real
+datatype string
+dfile string
+dir string
+foff int
+time real
+endtime real
+}
+
+output_mdlist &Tbl{
+sta string
+chan string
+nsamp int
+samprate real
+datatype string
+time real
+endtime real 
+dir string
+dfile string
+}
+
+
+InputAttributeMap css3.0
+OutputAttributeMap css3.0
+output_dir wfwd
+records_in_group 1000
+resample_flag 0
+
+gaussian_width 0.4
+
+max_iteration_time 1000
+tolerance_of_misfit 0
+tolerance_of_misfit_in_step 0
+damping_factor 0
+
+shaping_wavelet_type gaussian
+shaping_wavelet_frequency 0
