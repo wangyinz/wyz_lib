@@ -1,0 +1,26 @@
+BIN=migsimulation
+PF=migsimulation.pf
+SUBDIR=/contrib
+#MAN1=migsimulation.1
+ldlibs=-lseispp -ltrvltm -lbrttutil $(TRLIBS) $(DBLIBS) $(F77LIBS)\
+               -lperf -lgclgrid -lseispp
+
+ANTELOPEMAKELOCAL = $(ANTELOPE)/contrib/include/antelopemake.local
+include $(ANTELOPEMAKE)  	
+include $(ANTELOPEMAKELOCAL)
+
+OBJS=migsimulation.o SimplePSPrimarySynthetic.o PointSourcePSSynthetic.o SphericalRayPathArray.o vectorcls.o 
+#OBJS=migsimulation.o SimplePSPrimarySynthetic.o
+
+LDFLAGS += -L$(BOOSTLIB)
+
+CXXFLAGS +=  -I$(BOOSTINCLUDE) -O3
+
+
+$(BIN) : $(OBJS)
+	$(RM) $@
+	$(CXX) $(CXXFLAGS) -o $@ $(OBJS) $(LDFLAGS) $(LDLIBS)
+
+#clean:
+#	-rm ${BIN}
+#	-rm ${OBJS}
